@@ -10,8 +10,11 @@ namespace GAIClient.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        public string Login { get; set; }
-        public string Password { get; set; }
+        private string _login;
+        public string Login { get => _login; set => SetProperty(ref _login, value); }
+
+        private string _password;
+        public string Password { get => _password; set => SetProperty(ref _password, value); }
 
         private int _incorrentCounter;
 
@@ -26,7 +29,7 @@ namespace GAIClient.ViewModels
             }
         }
 
-        private bool _timerIsAlive;
+        //private bool _timerIsAlive;
         private int _elapsedTime = 60;
 
         private bool _errorIsVisible;
@@ -109,6 +112,9 @@ namespace GAIClient.ViewModels
                 return;
             }
 
+            //Password = string.Empty;
+            //Login = string.Empty;
+
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
         }
@@ -133,7 +139,7 @@ namespace GAIClient.ViewModels
         {
             --_elapsedTime;
             Preferences.Set("Elapsed Time", ((double)_elapsedTime).ToString());
-            ErrorText = $"Слишком много попыток. Повторите попытку через {_elapsedTime} сек.";
+            ErrorText = $"Слишком много попыток. \nПовторите попытку через {_elapsedTime} сек.";
             if (_elapsedTime == 0)
             {
                 _elapsedTime = 60;
@@ -154,7 +160,7 @@ namespace GAIClient.ViewModels
             }
             InputIsEnabled = false;
             ErrorIsVisible = true;
-            ErrorText = "Слишком много попыток. Повторите попытку через 60 сек.";
+            ErrorText = "Слишком много попыток. \nПовторите попытку через 60 сек.";
         }
     }
 }

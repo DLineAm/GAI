@@ -110,6 +110,7 @@
                 <Label Text="Главное меню"
                        FontSize="20"
                        FontAttributes="Bold"
+                       FontFamily="SFProBold"
                        TextColor="White"></Label>
             </Grid>
             </Frame>

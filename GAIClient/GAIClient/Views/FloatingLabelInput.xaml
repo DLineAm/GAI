@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GAIClient.Views.FloatingLabelInput">
+  <ContentView.Content>
+      <StackLayout> 
+          <Label x:Name="LabelTitle"
+                 Text="{Binding Placeholder}"
+                 TextColor="White"
+                 FontSize="20"
+                 Margin="3,0,0,-7"></Label>
+          <Entry x:Name="EntryContent"
+                 Placeholder="{Binding Placeholder}" 
+                 Focused="Handle_Focused"
+                 Unfocused="Handle_Unfocused"
+                 TextColor="White"
+                 Text="{Binding Text}"
+                 ></Entry>
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

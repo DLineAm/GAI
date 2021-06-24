@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:GAIClient.Views;assembly=GAIClient"
              mc:Ignorable="d"
              x:Class="GAIClient.Views.LoginPage"
              Shell.NavBarIsVisible="False">
@@ -23,40 +24,55 @@
                        Text="Окно входа"
                        TextColor="White"
                        HorizontalOptions="Center"
-                       Margin="0,150, 0,0"></Label>
+                       Margin="0,150, 0,0"
+                       FontFamily="SFProBold"></Label>
             </Frame>
             
             <Label Grid.Row="1"
                    Text="Перед использованием основного функционала приложения необходимо войти в систему"
-                    Margin="10,0" FontSize="20"
+                    FontSize="20"
+                   Margin="0,120,0,10"
                    HorizontalTextAlignment="Center"
-                   VerticalOptions="Center"></Label>
+                   VerticalOptions="End"
+                   TextColor="Gray"
+                   FontFamily="SFPro"></Label>
 
             <StackLayout Grid.Row="2"
-                         VerticalOptions="Center"
+                         VerticalOptions="Start"
                          Margin="10,0">
                 <Frame Background="#2196F3"
                        CornerRadius="6">
-                    <StackLayout Padding="10,0,10,0" >
-                        <Label Text="Логин"
+                    <StackLayout Padding="10,10,10,0" >
+                        <!--<Label Text="Логин"
                                TextColor="White"
-                               FontSize="20"></Label>
+                               FontSize="20"
+                               Margin="4,0,0,0"
+                               FontFamily="SFPro"></Label>
                         <Entry Text="{Binding Login}"
                                IsEnabled="{Binding InputIsEnabled}"
-                               x:Name="LoginEntry"></Entry>
-                        <Label Text="Пароль"
+                               x:Name="LoginEntry"
+                               FontFamily="SFPro"></Entry>-->
+                        <!--<Label Text="Пароль"
                                TextColor="White"
-                               FontSize="20"></Label>
+                               FontSize="20"
+                               Margin="4,10,0,0"
+                               FontFamily="SFPro"></Label>
                         <Entry Text="{Binding Password}"
                                IsEnabled="{Binding InputIsEnabled}"
-                               x:Name="PasswordEntry"></Entry>
+                               x:Name="PasswordEntry"
+                               FontFamily="SFPro"></Entry>-->
+                        <views:FloatingLabelInput Placeholder="Логин" Text="{Binding Login}"/>
+                        <views:FloatingLabelInput Placeholder="Пароль" Text="{Binding Password}"/>
                         <Button VerticalOptions="Center" 
                                 Text="Войти" 
                                 Command="{Binding LoginCommand}"
                                 Margin="0,10"
                                 IsEnabled="{Binding InputIsEnabled}"
-                                BackgroundColor="#7A8EBB"
-                                x:Name="Button"/>
+                                BackgroundColor="#33cbff"
+                                Background="#33cbff"
+                                x:Name="Button"
+                                FontFamily="SFPro"
+                                FontSize="16"/>
                     </StackLayout>
                 </Frame>
                 <Label Text="{Binding ErrorText}"

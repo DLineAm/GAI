@@ -29,6 +29,10 @@
             </Style>
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="FontFamily" Value="SFPro"></Setter>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="SFPro"></Setter>
             </Style>
         </ResourceDictionary>        
     </Application.Resources>
