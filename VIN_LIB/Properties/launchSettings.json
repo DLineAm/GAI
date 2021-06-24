@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "VIN_LIB": {
+      "commandName": "Project"
+    },
+    "newProfile1": {
+      "commandName": "Project"
+    }
+  }
+}
