@@ -7,8 +7,67 @@
              x:Class="GAIClient.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Frame
+                   VerticalOptions="Center"
+                   Background="#2196F3">
+                <Label 
+                       FontSize="35"
+                       FontAttributes="Bold"
+                       Text="Окно входа"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       Margin="0,150, 0,0"></Label>
+            </Frame>
+            
+            <Label Grid.Row="1"
+                   Text="Перед использованием основного функционала приложения необходимо войти в систему"
+                    Margin="10,0" FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Center"></Label>
+
+            <StackLayout Grid.Row="2"
+                         VerticalOptions="Center"
+                         Margin="10,0">
+                <Frame Background="#2196F3"
+                       CornerRadius="6">
+                    <StackLayout Padding="10,0,10,0" >
+                        <Label Text="Логин"
+                               TextColor="White"
+                               FontSize="20"></Label>
+                        <Entry Text="{Binding Login}"
+                               IsEnabled="{Binding InputIsEnabled}"
+                               x:Name="LoginEntry"></Entry>
+                        <Label Text="Пароль"
+                               TextColor="White"
+                               FontSize="20"></Label>
+                        <Entry Text="{Binding Password}"
+                               IsEnabled="{Binding InputIsEnabled}"
+                               x:Name="PasswordEntry"></Entry>
+                        <Button VerticalOptions="Center" 
+                                Text="Войти" 
+                                Command="{Binding LoginCommand}"
+                                Margin="0,10"
+                                IsEnabled="{Binding InputIsEnabled}"
+                                BackgroundColor="#7A8EBB"
+                                x:Name="Button"/>
+                    </StackLayout>
+                </Frame>
+                <Label Text="{Binding ErrorText}"
+                       FontSize="18"
+                       TextColor="Gray"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,10,0,0"
+                       IsVisible="{Binding ErrorIsVisible}"></Label>
+            </StackLayout>
+            
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>
