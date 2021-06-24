@@ -8,6 +8,7 @@ namespace jhk
 {
     class Program
     {
+        //Для тестирования библиотек REG_MARK_LIB и VIN_LIB;
         static void Main(string[] args)
         {
             var s = "JHMCM56557C404453";
@@ -19,11 +20,6 @@ namespace jhk
             Console.WriteLine(VIN.CheckVIN(s));
             Console.WriteLine(VIN.GetVINCountry(s));
             Console.ReadKey();
-
-
-
-            string sr = "fdhfdgjh";
-            char c = s[1];
         }
 
     }
