@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "REG_MARK_LIB", "..\REG_MARK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAIClient.Android", "..\GAIClient\GAIClient.Android\GAIClient.Android.csproj", "{5B449715-A365-4848-9189-338D7AC2A502}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAIClient", "..\GAIClient\GAIClient\GAIClient.csproj", "{14575838-2E41-45DE-A77B-6014920FECF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GAIClient", "..\GAIClient\GAIClient\GAIClient.csproj", "{14575838-2E41-45DE-A77B-6014920FECF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAI_API", "..\GAI_API\GAI_API.csproj", "{396668D8-EEEC-4083-AEA7-F866104FDE12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{14575838-2E41-45DE-A77B-6014920FECF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14575838-2E41-45DE-A77B-6014920FECF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14575838-2E41-45DE-A77B-6014920FECF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{396668D8-EEEC-4083-AEA7-F866104FDE12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{396668D8-EEEC-4083-AEA7-F866104FDE12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{396668D8-EEEC-4083-AEA7-F866104FDE12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{396668D8-EEEC-4083-AEA7-F866104FDE12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

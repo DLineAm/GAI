@@ -8,7 +8,7 @@ namespace GAIClient
 {
     public partial class App : Application
     {
-
+        public const string Address = "http://192.168.1.4:5000/";
         public App()
         {
             InitializeComponent();

@@ -9,7 +9,7 @@ namespace GAIClient.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
+            Title = "Главное окно";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
         }
 

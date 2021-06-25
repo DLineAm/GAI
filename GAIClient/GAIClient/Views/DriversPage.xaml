@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:GAIClient.ViewModels;assembly=GAIClient"
+             xmlns:services="clr-namespace:GAIClient.Services;assembly=GAIClient"
+             xmlns:shapes="clr-namespace:Xamarin.Forms.Shapes;assembly=Xamarin.Forms.Core"
+             x:Class="GAIClient.Views.DriversPage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <viewModels:DriversViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <services:ByteToImageSourceConverter x:Key="ImageSourceConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Поиск"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Title"
+                Text="{Binding DriversCount}"
+                Margin="0,10,0,0">
+            </Label>
+            <!--<ActivityIndicator Grid.Row="1"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"
+                               IsRunning="{Binding LoadingIsRunning}"
+                               Color="{StaticResource Primary}"></ActivityIndicator>-->
+            <RefreshView Grid.Row="1" IsRefreshing="{Binding LoadingIsRunning, Mode=TwoWay}"
+                         Command="{Binding LoadItemsCommand}"
+                         RefreshColor="{StaticResource Primary}">
+                <ListView  ItemsSource="{Binding Drivers}"
+                             Margin="0,0,0,0"
+                             RowHeight="150"
+                             SelectedItem="{Binding Driver}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!--<ImageCell ImageSource="{Binding image}"
+                                   Text="{Binding firstname}"
+                                   Detail="{Binding address}"></ImageCell>-->
+                            <ViewCell>
+                                <Frame BackgroundColor="{StaticResource Primary}"
+                                   Margin="0,10"
+                                   HasShadow="True">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image Source="{Binding image, Converter={StaticResource ImageSourceConverter}}"
+                                           Aspect="AspectFill"
+                                           HeightRequest="50"
+                                           WidthRequest="50"></Image>
+                                            <Label FontSize="20" Margin="10,0,0,0"
+                                           TextColor="White"
+                                           VerticalOptions="Center">
+                                                <Label.Text>
+                                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                                        <Binding Path="lastname"></Binding>
+                                                        <Binding Path="firstname"></Binding>
+                                                        <Binding Path="middlename"></Binding>
+                                                    </MultiBinding>
+                                                </Label.Text>
+                                            </Label>
+                                        </StackLayout>
+                                        <!--<Frame Height="2" Margin="10,0"
+                                       Background="White"
+                                       HorizontalOptions="CenterAndExpand"></Frame>-->
+                                        <shapes:Rectangle Fill="White"
+                                                  HeightRequest="2"
+                                                  WidthRequest="100"
+                                                  HorizontalOptions="StartAndExpand"/>
+                                        <Label Text="{Binding address}"
+                                       TextColor="White"></Label>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:DriversViewModel}}, Path=ItemTapped}"
+                                                          CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                        <!--CommandParameter="{Binding .}"-->
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RefreshView>
+
+
+            <!--<Grid Grid.Row="1"
+                      VerticalOptions="End"
+                      HeightRequest="35">
+                <Button Text="Zdarova"
+                            TextColor="Black"
+                            Background="Transparent"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center"
+                            Margin="0,0,0,0"></Button>
+                <Frame BackgroundColor="{StaticResource Primary}">
+                    <Grid HeightRequest="25">
+                        <Button Text="Zdarova"
+                        Background="Transparent"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        Margin="0,0,0,0"></Button>
+                    </Grid>
+                </Frame>
+            </Grid>-->
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
