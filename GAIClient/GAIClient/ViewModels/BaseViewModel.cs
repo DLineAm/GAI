@@ -12,6 +12,8 @@ namespace GAIClient.ViewModels
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
+        public IDataStore<Drivers> DriversDataStore => DependencyService.Get<IDataStore<Drivers>>();
+
         bool isBusy = false;
         public bool IsBusy
         {

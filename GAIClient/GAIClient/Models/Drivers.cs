@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GAI_API.Models
+namespace GAIClient.Models
 {
     public class Drivers
     {

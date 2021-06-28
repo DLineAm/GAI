@@ -61,8 +61,12 @@
                                IsEnabled="{Binding InputIsEnabled}"
                                x:Name="PasswordEntry"
                                FontFamily="SFPro"></Entry>-->
-                        <views:FloatingLabelInput Placeholder="Логин" Text="{Binding Login}"/>
-                        <views:FloatingLabelInput Placeholder="Пароль" Text="{Binding Password}"/>
+                        <views:FloatingLabelInput Placeholder="Логин"
+                                                  Text="{Binding Login}"
+                                                  TextIsEnabled="{Binding InputIsEnabled}"/>
+                        <views:FloatingLabelInput Placeholder="Пароль"
+                                                  Text="{Binding Password}"
+                                                  TextIsEnabled="{Binding InputIsEnabled}"/>
                         <Button VerticalOptions="Center" 
                                 Text="Войти" 
                                 Command="{Binding LoginCommand}"

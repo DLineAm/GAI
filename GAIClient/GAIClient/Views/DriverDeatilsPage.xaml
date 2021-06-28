@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:GAIClient.Views;assembly=GAIClient"
+             xmlns:viewModels="clr-namespace:GAIClient.ViewModels;assembly=GAIClient"
+             xmlns:services="clr-namespace:GAIClient.Services;assembly=GAIClient"
+             x:Class="GAIClient.Views.DriverDeatilsPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:DirverDetailsViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <services:ByteToImageSourceConverter x:Key="ImageSourceConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Frame
+                VerticalOptions="Center"
+                Background="#2196F3">
+                <Label 
+                    FontSize="35"
+                    FontAttributes="Bold"
+                    Text="О водителе"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    Margin="0,150, 0,0"
+                    FontFamily="SFProBold"></Label>
+            </Frame>
+
+            <ScrollView Grid.Row="1" Margin="0,0,0,10">
+            <Frame BackgroundColor="{StaticResource Primary}"
+                   Margin="10" CornerRadius="6">
+                <Frame.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="TextColor" Value="White"></Setter>
+                    </Style>
+                    <Style TargetType="views:FloatingLabelInput">
+                        <Setter Property="WidthRequest" Value="300"></Setter>
+                    </Style>
+                </Frame.Resources>
+
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Image Source="{Binding Image, Converter={StaticResource ImageSourceConverter}}"
+                               WidthRequest="50"
+                               HeightRequest="50"></Image>
+                        <Button HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="Center"
+                                 Text="Выбрать фото"
+                                HeightRequest="35"
+                                 BackgroundColor="#33cbff"
+                                 Background="#33cbff"
+                                Command="{Binding PickImageCommand}"></Button>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                        <!--<Label WidthRequest="100" Text="Id: "></Label>-->
+                        <views:FloatingLabelInput Placeholder="Id" Text="{Binding DriverId}" EntryKeyboard="Numeric"/>
+                        <Label Text="*"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Фамилия"
+                                                  Text="{Binding Driver.lastname, Mode=TwoWay}"></views:FloatingLabelInput>
+                        <Label Text="*"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Имя"
+                                                  Text="{Binding Driver.firstname, Mode=TwoWay}"></views:FloatingLabelInput>
+                        <Label Text="*"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Отчество"
+                                                  Text="{Binding Driver.middlename, Mode=TwoWay}"></views:FloatingLabelInput>
+                        <Label Text="*"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Паспорт (серия и номер)"
+                                                  EntryMask="XXXX-XXXXXX"
+                                                  EntryKeyboard="Numeric"
+                                                  Text="{Binding PassportNumber, Mode=TwoWay}"></views:FloatingLabelInput>
+                        <Label Text="*"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Адрес регистрации" 
+                                                  Text="{Binding Driver.address, Mode=TwoWay}"></views:FloatingLabelInput>
+                        <Label Text="*"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Адрес проживания" 
+                                                  Text="{Binding Driver.address_life, Mode=TwoWay}"></views:FloatingLabelInput>
+                        <Label Text="*"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Место работы"
+                                                  Text="{Binding Driver.company, Mode=TwoWay}"></views:FloatingLabelInput>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Должность" 
+                                                  Text="{Binding Driver.jobname, Mode=TwoWay}"></views:FloatingLabelInput>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Мобильный телефон" EntryKeyboard="Numeric" 
+                                                  Text="{Binding Driver.phone, Mode=TwoWay}"></views:FloatingLabelInput>
+                        <Label Text="*"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Email" 
+                                                  Text="{Binding Driver.email, Mode=TwoWay}"></views:FloatingLabelInput>
+                        <Label Text="*"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <views:FloatingLabelInput Placeholder="Замечания"
+                                                  Text="{Binding Driver.description, Mode=TwoWay}"></views:FloatingLabelInput>
+                    </StackLayout>
+                    <Button Text="Применить"
+                            BackgroundColor="#33cbff"
+                            Background="#33cbff"
+                            Command="{Binding ApplyCommand}"></Button>
+                </StackLayout>
+            </Frame>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
